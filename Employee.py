@@ -1,3 +1,6 @@
+import datetime
+
+
 class Employee:
     number_of_emps = 0
     raise_amount = 1.04
@@ -24,6 +27,12 @@ class Employee:
         first, last, pay = employee_info.split('-')
         return cls(first, last, pay)
 
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
+
 
 emp1_info = "Andy-Small-12000"
 emp2_info = "Shawn-Large-25000"
@@ -42,3 +51,7 @@ print(emp1.raise_amount)
 print(emp2.raise_amount)
 
 print("Number of Employees in the Company: " + str(Employee.number_of_emps))
+
+my_date = datetime.date(2018, 7, 10)
+
+print(Employee.is_workday(my_date))
